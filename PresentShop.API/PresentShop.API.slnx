@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PresentShop.API/PresentShop.API.csproj" />
+  <Project Path="PresentShop.Core/PresentShop.Core.csproj" Id="383fb1e0-418d-4aac-aa3c-b00f0fa672ee" />
+  <Project Path="PresentShop.Infrastructure/PresentShop.Infrastructure.csproj" Id="0dbf965c-538a-4189-a472-2ac5f8966ad7" />
+  <Project Path="PresentShop.Test/PresentShop.Test.csproj" Id="e4b3f55c-83a3-4ed7-a902-1f80a93f1bdd" />
+</Solution>
