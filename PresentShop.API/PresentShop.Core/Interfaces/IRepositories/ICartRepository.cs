@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PresentShop.Infrastructure.Repositories
+namespace PresentShop.Infrastructure.IRepositories
 {
     public interface ICartRepository : IRepository<Cart>
     {

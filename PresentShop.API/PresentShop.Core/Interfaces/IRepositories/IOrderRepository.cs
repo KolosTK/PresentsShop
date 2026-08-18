@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace PresentShop.Infrastructure.Repositories
+namespace PresentShop.Infrastructure.IRepositories
 {
     public interface IOrderRepository:IRepository<Order>
     {
