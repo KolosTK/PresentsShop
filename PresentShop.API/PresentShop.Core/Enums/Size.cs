@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PresentShop.Core.Entities
+namespace PresentShop.Core.Enums
 {
     public enum Size
     {

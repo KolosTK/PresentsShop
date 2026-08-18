@@ -4,12 +4,14 @@ using System.Text;
 
 namespace PresentShop.Core.Entities
 {
-    public class CartBox
+    public class OrderBox
     {
         public int Id { get; set; }
-        public int CartId { get; set; }
-        public Cart Cart { get; set; }
+        public int OrderId { get; set; }
+        public Order Order{ get; set; }
         public int BoxId { get; set; }
         public Box Box { get; set; }
+        public decimal FixedOrderPrice{ get; set; }
+        public decimal Quantity { get; set; }
     }
 }
