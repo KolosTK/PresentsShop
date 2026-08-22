@@ -9,8 +9,9 @@ namespace PresentShop.Core.Entities
     public class Cart
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public string? UserId { get; set; }
         public User User { get; set; }
+        public List<CartBox> CartBox { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

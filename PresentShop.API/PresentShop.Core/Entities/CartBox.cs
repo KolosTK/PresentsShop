@@ -11,5 +11,6 @@ namespace PresentShop.Core.Entities
         public Cart Cart { get; set; }
         public int BoxId { get; set; }
         public Box Box { get; set; }
+        public int BoxesQuantity {  get; set; }
     }
 }
