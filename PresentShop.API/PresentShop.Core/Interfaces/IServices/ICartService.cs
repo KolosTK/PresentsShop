@@ -12,6 +12,6 @@ namespace PresentShop.Core.Interfaces.IServices
         Task AddBoxToCartAsync(int cartId, int boxId);
         Task RemoveBoxFromCartAsync(int cartId, int boxId);
         Task ClearCartAsync (int cartId);
-        Task <CartDTO> GetActiveCartByUserIdAsync(int userId);
+        Task <CartDTO> GetActiveCartByUserIdAsync(string userId);
     }
 }
