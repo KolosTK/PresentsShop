@@ -17,5 +17,6 @@ namespace PresentShop.Core.Interfaces.IServices
         Task<List<BoxDTO>> GetAllBoxesAsync();
         Task<List<BoxDTO>> GetUserBoxesAsync(string id);
         Task<BoxDTO> CopyBoxFromExestedAsync(int Boxid, string userId);
+        Task<List<BoxDTO>> GetBoxesByTotalSumRangeAsync(decimal min, decimal max);
     }
 }
