@@ -9,6 +9,5 @@ namespace PresentShop.Infrastructure.IRepositories
     {
         Task<List<Box>> GetBoxItemsAsync(int boxId);
         Task<Box> GetBoxByUserId (string userId);
-        Task<Box> GetBoxesInTotalSumRangeAsync(decimal min, decimal max);
     }
 }
