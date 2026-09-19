@@ -9,13 +9,16 @@ namespace PresentShop.Core.Interfaces.IServices
     public interface IBoxService
     {
         Task<BoxDTO> GetBoxByIdAsync(int id);
-        Task UpdateBoxAsync(int id,UpdateBoxDTO box);
-        Task AddItemAsync(int boxId, AddItemToBoxDTO item);
-        Task RemoveItemFromBoxAsync(int id);
         Task CreateBoxAsync (CreateBoxDTO box);
-        Task DeleteBoxAsync(int id);
+        Task UpdateBoxAsync(int id,UpdateBoxDTO box);
+        Task DeleteBoxAsync(int boxId);
+
+        Task AddItemAsync(int boxId, BoxItemDTO item);
+        Task UpdateItemBoxAsync(int boxId, BoxItemDTO item);
+        Task RemoveItemFromBoxAsync(int boxId, int itemId);
+
         Task<List<BoxDTO>> GetAllBoxesAsync();
-        Task<List<BoxDTO>> GetUserBoxesAsync(string id);
-        Task<BoxDTO> CopyBoxFromExestedAsync(int Boxid, string userId);
+        Task<List<BoxDTO>> GetUserBoxesAsync(string userId);
+        Task<BoxDTO> CopyBoxFromExestedAsync(int boxId, string userId);
     }
 }
