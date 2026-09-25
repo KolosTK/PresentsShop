@@ -1,16 +1,12 @@
-﻿using PresentShop.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using PresentShop.Core.Enums;
 
 namespace PresentShop.Core.DTOs
 {
-    public class OrderDTO
+    public class CreateOrderDTO
     {
-        //Outgoing DTO - send info to React
-        public int Id { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public OrderStatus Status { get; set; }
-        public decimal TotalPrice { get; set; }
-        public List<OrderBoxDTO> OrderBoxes { get; set; }
         public string Address { get; set; }
         public string ContactNumber { get; set; }
         public string Email { get; set; }
