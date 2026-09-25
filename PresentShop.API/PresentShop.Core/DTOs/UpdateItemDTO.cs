@@ -6,7 +6,7 @@ namespace PresentShop.Core.DTOs
 {
     public class UpdateItemDTO
     {
-        //Incoming DTO
+        //Incoming DTO - get info from user
         public string Name { get; set; }
         public double Length { get; set; } = 1;
         public double Width { get; set; } = 1;

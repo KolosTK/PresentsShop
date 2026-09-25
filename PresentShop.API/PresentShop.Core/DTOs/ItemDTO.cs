@@ -6,7 +6,7 @@ namespace PresentShop.Core.DTOs
 {
     public class ItemDTO
     {
-        //Outgoing DTO 
+        //Outgoing DTO - send info to React
         public int Id { get; set; }
         public string Name { get; set; }
         public double Length { get; set; } = 1;
@@ -16,5 +16,6 @@ namespace PresentShop.Core.DTOs
         public decimal Price { get; set; }
         public string CategoryName { get; set; }
         public string ImageURL { get; set; }
+        public BoxItemDTO BoxItemDTO { get; set; }
     }
 }
