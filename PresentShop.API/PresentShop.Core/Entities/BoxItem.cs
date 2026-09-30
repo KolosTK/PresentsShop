@@ -8,6 +8,7 @@ namespace PresentShop.Core.Entities
 {
     public class BoxItem
     {
+        public int Id { get; set; }
         public int BoxId { get; set; }
         public Box Box { get; set; }
         public int ItemId { get; set; }

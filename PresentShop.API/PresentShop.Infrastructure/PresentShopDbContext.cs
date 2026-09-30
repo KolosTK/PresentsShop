@@ -21,5 +21,11 @@ namespace PresentShop.Infrastructure
         public DbSet<CartBox> CartBoxes { get; set; }
         public DbSet<OrderBox> OrderBoxes { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CartBox>()
+                .HasKey(cartBox => cartBox.)
+        }
     }
 }
