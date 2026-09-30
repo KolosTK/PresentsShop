@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PresentShop.Infrastructure.IRepositories
+namespace PresentShop.Core.Interfaces.IRepositories
 {
     public interface IBoxRepository : IRepository<Box>
     {

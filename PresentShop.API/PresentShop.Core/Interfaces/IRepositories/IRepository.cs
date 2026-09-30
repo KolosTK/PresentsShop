@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PresentShop.Infrastructure.IRepositories
+namespace PresentShop.Core.Interfaces.IRepositories
 {
     public interface IRepository<T> where T: class
     {
          Task<List<T>> GetAllAsync();
          Task<T?> GetByIdAsync(int Id);
-         Task DeleteById(int Id);
-         Task Update(T entity);
-         Task Create(T entity);
+         Task DeleteByIdAsync(int Id);
+         Task UpdateAsync(T entity);
+         Task CreateAsync(T entity);
     }
 }

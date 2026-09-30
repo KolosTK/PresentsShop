@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using PresentShop.Core.Interfaces.IServices;
 using PresentShop.Infrastructure;
+using PresentShop.Core.Interfaces.IRepositories;
+using PresentShop.Infrastructure.Repositories;
 
 
 
@@ -12,12 +14,17 @@ builder.Services.AddDbContext<PresentShopDbContext>(options =>
 
 
 
-// Add services to the container.
+// Add services to the DI container.
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IBoxService, BoxService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+// Add services to the DI container.
+builder.Services.AddScoped<IBoxRepository, BoxRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 
 builder.Services.AddControllers();
