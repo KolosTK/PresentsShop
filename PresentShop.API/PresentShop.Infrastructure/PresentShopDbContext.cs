@@ -24,8 +24,10 @@ namespace PresentShop.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CartBox>()
-                .HasKey(cartBox => cartBox.)
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<BoxSize>()
+                .Property(bs => bs.Size)
+                .HasConversion<int>();
         }
     }
 }

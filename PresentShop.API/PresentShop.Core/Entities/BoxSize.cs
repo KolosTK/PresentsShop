@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using PresentShop.Core.Enums;
+using Size = PresentShop.Core.Enums.Size;
 
 namespace PresentShop.Core.Entities
 {
     public class BoxSize
     {
-        int Id { get; set; }
-        int SizeId { get; set; }    
-        Size Size { get; set; }
-        int BoxId { get; set; }
-        Box Box { get; set; }
+        public int Id { get; set; }
+        public Size Size { get; set; }    
+        public int BoxId { get; set; }
+        public Box Box { get; set; }
     }
 }

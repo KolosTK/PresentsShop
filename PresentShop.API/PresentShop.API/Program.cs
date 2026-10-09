@@ -21,7 +21,7 @@ builder.Services.AddScoped<IBoxService, BoxService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
-// Add services to the DI container.
+// Add repositories to the DI container.
 builder.Services.AddScoped<IBoxRepository, BoxRepository>();
 builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
@@ -29,8 +29,9 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+
 
 var app = builder.Build();
 

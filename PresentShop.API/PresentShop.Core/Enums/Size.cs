@@ -11,6 +11,6 @@ namespace PresentShop.Core.Enums
         M = 200,
         L = 250,
         XL = 300,
-        XXL = 500,
+        XXL = 500
     }
 }
