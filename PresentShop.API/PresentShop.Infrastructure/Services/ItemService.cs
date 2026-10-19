@@ -2,12 +2,20 @@
 using PresentShop.Core.Interfaces.IServices;
 using System;
 using System.Collections.Generic;
+using PresentShop.Core.Interfaces.IRepositories;
 using System.Text;
+using PresentShop.Core.Entities;
 
 namespace PresentShop.Infrastructure.Services
 {
     public class ItemService : IItemService
     {
+        private readonly IItemRepository _itemRepository;
+        public ItemService(IItemRepository itemRepository)
+        {
+            _itemRepository = itemRepository;
+        }
+
         public Task CreateItemAsync(CreateItemDTO item)
         {
             throw new NotImplementedException();
@@ -18,14 +26,41 @@ namespace PresentShop.Infrastructure.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<ItemDTO>> GetAllItemsAsync()
+        public async Task<List<ItemDTO>> GetAllItemsAsync()
         {
-            throw new NotImplementedException();
+            List<Item>  items = await _itemRepository.GetAllAsync();
+
+            return items.Select(item=>new ItemDTO {
+            Id= item.Id,
+            Name= item.Name,
+            Length= item.Length,
+            Width= item.Width,
+            Height= item.Height,
+            Description= item.Description,
+            Price= item.Price,
+            CategoryName = item.Category.Name,
+            ImageURL= item.ImageURL
+            }).ToList();
         }
 
-        public Task<ItemDTO> GetItemByIdAsync(int id)
+        public async Task<ItemDTO?> GetItemByIdAsync(int id)
         {
-            throw new NotImplementedException();
+           
+            Item? item = await _itemRepository.GetByIdAsync(id);
+            if (item == null) return null;
+
+            return new ItemDTO{
+            Id = item.Id,
+            Name= item.Name,
+            Length= item.Length,
+            Width= item.Width,
+            Height= item.Height,
+            Description= item.Description,
+            Price= item.Price,
+            CategoryName = item.Category.Name,
+            ImageURL= item.ImageURL
+            };
+            
         }
 
         public Task<List<ItemDTO>> GetItemsByCategoryAsync(int categoryId)

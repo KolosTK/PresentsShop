@@ -1,4 +1,5 @@
-﻿using PresentShop.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PresentShop.Core.Entities;
 using PresentShop.Core.Interfaces.IRepositories;
 using System;
 using System.Collections.Generic;
@@ -8,24 +9,30 @@ namespace PresentShop.Infrastructure.Repositories
 {
     public class ItemRepository : IItemRepository
     {
+        private readonly PresentShopDbContext _dbContext;
+        public ItemRepository(PresentShopDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public Task CreateAsync(Item entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteByIdAsync(int Id)
+        public Task DeleteByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Item>> GetAllAsync()
+        public async Task<List<Item>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Items.Include(item=>item.Category).ToListAsync();
         }
 
-        public Task<Item?> GetByIdAsync(int Id)
+        public async Task<Item?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+           return await _dbContext.Items.Include(item => item.Category).FirstOrDefaultAsync(item=>item.Id==id);
         }
 
         public Task<List<Item>> GetItemsByCategoryIdAsync(int categoryId)

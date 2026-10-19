@@ -10,10 +10,9 @@ using PresentShop.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add dbContext to the DI container
 builder.Services.AddDbContext<PresentShopDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-
 
 // Add services to the DI container.
 builder.Services.AddScoped<IItemService, ItemService>();
