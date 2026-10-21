@@ -28,5 +28,12 @@ namespace PresentShop.API.Controllers
             
             return item == null ? NotFound() : item;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateItem(CreateItemDTO createItemDTO)
+        {
+            await _itemService.CreateItemAsync(createItemDTO);
+            return Ok();
+        }
     }
 }

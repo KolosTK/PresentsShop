@@ -9,7 +9,7 @@ namespace PresentShop.Infrastructure.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-        public Task CreateAsync(Order entity)
+        public Task CreateItemAsync(Order entity)
         {
             throw new NotImplementedException();
         }

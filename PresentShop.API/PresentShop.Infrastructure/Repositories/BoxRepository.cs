@@ -8,7 +8,7 @@ namespace PresentShop.Infrastructure.Repositories
 {
     public class BoxRepository : IBoxRepository
     {
-        public Task CreateAsync(Box entity)
+        public Task CreateItemAsync(Box entity)
         {
             throw new NotImplementedException();
         }

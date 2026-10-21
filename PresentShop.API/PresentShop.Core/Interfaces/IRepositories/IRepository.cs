@@ -10,6 +10,6 @@ namespace PresentShop.Core.Interfaces.IRepositories
          Task<T?> GetByIdAsync(int Id);
          Task DeleteByIdAsync(int Id);
          Task UpdateAsync(T entity);
-         Task CreateAsync(T entity);
+         Task CreateItemAsync(T entity);
     }
 }

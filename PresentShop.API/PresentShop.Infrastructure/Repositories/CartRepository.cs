@@ -8,7 +8,7 @@ namespace PresentShop.Infrastructure.Repositories
 {
     public class CartRepository : ICartRepository
     {
-        public Task CreateAsync(Cart entity)
+        public Task CreateItemAsync(Cart entity)
         {
             throw new NotImplementedException();
         }

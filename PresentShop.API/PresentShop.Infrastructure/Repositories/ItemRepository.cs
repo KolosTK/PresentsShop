@@ -15,9 +15,10 @@ namespace PresentShop.Infrastructure.Repositories
             _dbContext = dbContext;
         }
 
-        public Task CreateAsync(Item entity)
+        public async Task CreateItemAsync(Item entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.Items.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public Task DeleteByIdAsync(int id)

@@ -16,9 +16,19 @@ namespace PresentShop.Infrastructure.Services
             _itemRepository = itemRepository;
         }
 
-        public Task CreateItemAsync(CreateItemDTO item)
+        public async Task CreateItemAsync(CreateItemDTO createItemDTO)
         {
-            throw new NotImplementedException();
+            await _itemRepository.CreateItemAsync(new Item
+            {
+                Name = createItemDTO.Name,
+                Length = createItemDTO.Length,
+                Width = createItemDTO.Width,
+                Height = createItemDTO.Height,
+                Description = createItemDTO.Description,
+                Price = createItemDTO.Price,
+                CategoryId = createItemDTO.CategoryId,
+                ImageURL = createItemDTO.ImageURL
+            });
         }
 
         public Task DeleteItemAsync(int id)
