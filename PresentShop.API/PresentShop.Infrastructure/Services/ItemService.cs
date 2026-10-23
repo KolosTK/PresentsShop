@@ -16,6 +16,7 @@ namespace PresentShop.Infrastructure.Services
             _itemRepository = itemRepository;
         }
 
+    
         public async Task CreateItemAsync(CreateItemDTO createItemDTO)
         {
             await _itemRepository.CreateItemAsync(new Item
@@ -31,26 +32,12 @@ namespace PresentShop.Infrastructure.Services
             });
         }
 
-        public Task DeleteItemAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<List<ItemDTO>> GetAllItemsAsync()
         {
             List<Item>  items = await _itemRepository.GetAllAsync();
 
-            return items.Select(item=>new ItemDTO {
-            Id= item.Id,
-            Name= item.Name,
-            Length= item.Length,
-            Width= item.Width,
-            Height= item.Height,
-            Description= item.Description,
-            Price= item.Price,
-            CategoryName = item.Category.Name,
-            ImageURL= item.ImageURL
-            }).ToList();
+            return items.Select(MapToDto).ToList();
         }
 
         public async Task<ItemDTO?> GetItemByIdAsync(int id)
@@ -58,34 +45,46 @@ namespace PresentShop.Infrastructure.Services
            
             Item? item = await _itemRepository.GetByIdAsync(id);
             if (item == null) return null;
-
-            return new ItemDTO{
-            Id = item.Id,
-            Name= item.Name,
-            Length= item.Length,
-            Width= item.Width,
-            Height= item.Height,
-            Description= item.Description,
-            Price= item.Price,
-            CategoryName = item.Category.Name,
-            ImageURL= item.ImageURL
-            };
-            
+            return MapToDto(item);
         }
 
-        public Task<List<ItemDTO>> GetItemsByCategoryAsync(int categoryId)
+        public async Task<List<ItemDTO>> GetItemsByCategoryAsync(int categoryId)
+        {
+            List<Item> items = await _itemRepository.GetItemsByCategoryIdAsync(categoryId);
+            return items.Select(MapToDto).ToList();
+        }
+        public async Task<List<ItemDTO>> GetItemsByPriceRangeAsync(decimal min, decimal max)
+        {
+            List<Item> items = await _itemRepository.GetItemsByPriceRangeAsync(min, max);
+            return items.Select(MapToDto).ToList();
+        }
+        public Task DeleteItemAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ItemDTO>> GetItemsByPriceRangeAsync(decimal min, decimal max)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Task UpdateItemAsync(int updatedItemId, UpdateItemDTO item)
         {
             throw new NotImplementedException();
+        }
+
+
+        private static ItemDTO MapToDto(Item item)
+        {
+            return new ItemDTO
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Length = item.Length,
+                Width = item.Width,
+                Height = item.Height,
+                Description = item.Description,
+                Price = item.Price,
+                CategoryName = item.Category.Name,
+                ImageURL = item.ImageURL
+            };
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using PresentShop.Core.DTOs;
 using PresentShop.Core.Interfaces.IServices;
 
@@ -25,8 +26,23 @@ namespace PresentShop.API.Controllers
         public async Task<ActionResult<ItemDTO>> GetById(int id)
         {
             ItemDTO? item = await _itemService.GetItemByIdAsync(id);
-            
+
             return item == null ? NotFound() : item;
+        }
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<ActionResult<List<ItemDTO>>> GetByCategoryId(int categoryId)
+        {
+            List<ItemDTO> items = await _itemService.GetItemsByCategoryAsync(categoryId);
+            return items;
+        }
+
+        //api/item/price?min=5&max=10
+        [HttpGet("price")]
+        public async Task<ActionResult<List<ItemDTO>>> GetByPriceRange(decimal min, decimal max)
+        {
+            List<ItemDTO> items = await _itemService.GetItemsByPriceRangeAsync(min, max);
+            return items;
         }
 
         [HttpPost]
@@ -36,4 +52,5 @@ namespace PresentShop.API.Controllers
             return Ok();
         }
     }
+    
 }
