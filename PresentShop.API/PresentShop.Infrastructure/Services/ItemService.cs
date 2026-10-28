@@ -58,16 +58,29 @@ namespace PresentShop.Infrastructure.Services
             List<Item> items = await _itemRepository.GetItemsByPriceRangeAsync(min, max);
             return items.Select(MapToDto).ToList();
         }
-        public Task DeleteItemAsync(int id)
+
+        public async Task<bool> UpdateItemAsync(UpdateItemDTO itemDTO)
         {
-            throw new NotImplementedException();
+            Item? item = await _itemRepository.GetByIdAsync(itemDTO.Id);
+            if (item == null) return false;
+
+            item.Name = itemDTO.Name;
+            item.Length = itemDTO.Length;
+            item.Width = itemDTO.Width;
+            item.Height = itemDTO.Height;
+            item.Description = itemDTO.Description;
+            item.Price = itemDTO.Price;
+            item.CategoryId = itemDTO.CategoryId;
+            item.ImageURL = itemDTO.ImageURL;
+
+            await _itemRepository.UpdateAsync(item);
+            return true;
         }
 
-        
 
-        public Task UpdateItemAsync(int updatedItemId, UpdateItemDTO item)
+        public async Task<bool> DeleteItemAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _itemRepository.DeleteByIdAsync(id);
         }
 
 

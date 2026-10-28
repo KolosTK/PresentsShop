@@ -40,17 +40,22 @@ namespace PresentShop.Infrastructure.Repositories
             await _dbContext.Items.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
-
-        public Task DeleteByIdAsync(int id)
+        public async Task UpdateAsync(Item entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteByIdAsync(int itemId)
+        {
+            Item? deletedItem = await _dbContext.Items.FirstOrDefaultAsync(item=>item.Id == itemId);
+            if (deletedItem == null) return false;
+            _dbContext.Items.Remove(deletedItem);
+            await _dbContext.SaveChangesAsync();
+            return true;
         }
 
         
 
-        public Task UpdateAsync(Item entity)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

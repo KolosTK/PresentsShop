@@ -14,7 +14,7 @@ namespace PresentShop.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task DeleteByIdAsync(int Id)
+        public Task<bool> DeleteByIdAsync(int Id)
         {
             throw new NotImplementedException();
         }

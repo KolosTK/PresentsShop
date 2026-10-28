@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace PresentShop.Core.DTOs
@@ -7,6 +8,7 @@ namespace PresentShop.Core.DTOs
     public class ItemDTO
     {
         //Outgoing DTO - send info to React
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
         public string Name { get; set; }
         public double Length { get; set; } = 1;

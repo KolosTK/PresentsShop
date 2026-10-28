@@ -51,6 +51,20 @@ namespace PresentShop.API.Controllers
             await _itemService.CreateItemAsync(createItemDTO);
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateItem(UpdateItemDTO updateItemDTO)
+        {
+            bool result = await _itemService.UpdateItemAsync(updateItemDTO);
+            return result ? Ok() : NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteItem(int id)
+        {
+            bool result = await _itemService.DeleteItemAsync(id);
+            return result ? Ok() : NotFound();
+        }
     }
     
 }
